@@ -98,3 +98,120 @@ l2 = [1,2,{'k1': 4}]
 l1[2][0] >= l2[2]['k1']
 #3 >= 4 (=) False
 print(l1[2][0] >= l2[2]['k1'])
+
+### Python Statements ###
+
+number_3 = 0
+if number_3 == 3:
+    print('Number 3')
+else:
+    print('Not 3')
+
+for i in range(7):
+    if i == 3:
+        print('Number 3')
+        
+    else:
+        print(i)
+
+#Tuple unpacking
+my_list = [(1,2), (2,3), (3,4), (4,5)]
+for (a,b) in my_list:
+    print(a)
+    print(b)
+
+my_dict = {'k1': 'v1', 'k2': 'v2', 'k3': 3}
+for key,value in my_dict.items():
+    print(value)    
+
+#While loops
+x = 0
+while x < 3:
+    print('not 3 yet')
+    x += 1
+
+#Operators
+word = 'Python'
+for letter in enumerate(word):
+    print(letter)
+
+# for index, letter in enumerate(word):
+# print(index, letter)
+
+mylist1 = [1,2,3]
+mylist2 = ['a','b','c']
+mylist3 = ['222']
+
+for item in zip(mylist1, mylist2, mylist3):
+    print(item)
+
+print('mykey' in {'mykey': 123})
+
+d = {'mykey': 123}
+print(123 in d.values())
+
+print(min(mylist1))
+print(max(mylist2))
+
+from random import shuffle
+shuffle(mylist1)
+print(mylist1)
+
+from random import randint
+print(randint(0, 4))
+
+result = input('What are you doing? ')
+#result is a string
+print(result)
+
+#List comprehensions
+mystring = 'Americano'
+list_1 = [letter for letter in mystring]
+print(list_1)
+
+list_2 = [num**2 for num in range(1,101)]
+print(list_2)
+
+list_3 = [x for x in range(0,101) if x%2==0]
+print(list_3)
+
+
+### Test ###
+#Use for, split() and if to create a statement that will print out words that start with s
+st = 'Print only words that start with s in this sentence'
+list_st = [word for word in st.split(' ') if word[0].lower() == 's']
+for i in list_st:
+    print(i)
+
+#Use range() to print all the even numbers from 0 to 10.
+print([i for i in range(0,11) if i % 2 == 0])
+
+#Use a List comprehension to create a list of all numbers between 1 and 50 that are divisible by 3
+
+print([i for i in range(1,51) if i % 3 == 0])
+
+#Iterate through and if the length of a word is even print "even!"
+
+st = 'Print every word in this sentence that has an even number of letters'
+
+for word in st.split():
+    if len(word) % 2 == 0:
+        print(word + " is even")
+
+#Write a program that prints the integers from 1 to 100. For multiples of 3 print "Fizz" and for multiples of 5 print "Buzz", for both print "FizzBuzz"
+
+for i in range(0, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        print('FizzBuzz')
+    elif i % 3 == 0:
+        print('Fizz')
+    elif i % 5 == 0:
+        print('Buzz')
+    else:
+        print(i)
+
+
+# Use list comprehension to create a list of the first letters of every word in the string below:
+st = 'Create a list of the first letters of every word in this string'
+
+print([i[0] for i in st.split(' ')])
