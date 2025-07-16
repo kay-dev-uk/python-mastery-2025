@@ -1,3 +1,6 @@
+import csv
+FILENAME = "contacts.csv"
+
 def display_menu():
     # Displays the menu
     print('1. Add Contact\n2. View All Contacts\n3. Search for Contact\n4. Quit')
@@ -17,6 +20,16 @@ def view_contacts(contacts):
         return
     for name,phone in contacts.items():
         print('Name: ' + name + '\nPhone: ' + phone + '\n--- --- ---')
+
+def load_contacts():
+    pass
+
+def save_contacts(contacts):
+    with open(FILENAME, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Name', 'Phone Number'])
+        for name,phone in contacts.items():
+            writer.writerow([name, phone])
          
 def main():
     contacts = {}
@@ -31,6 +44,7 @@ def main():
             print('Search not yet implemented')
         elif user_selection == '4':
             print('Goodbye')
+            save_contacts(contacts)
             break
         else:
             print('Invalid choice. Please, enter a number between 1 and 4')
