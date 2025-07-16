@@ -1,29 +1,40 @@
-
-def contact_book():
-    list_of_contacts = {}
-    def add_contact():
-        contact_name = input('Name: ')
-        contact_phone = input('Phone: ')
-        list_of_contacts[contact_name] = contact_phone
-        print(contact_name + ' was saved successfully!')
-        display_menu()
-
-    def view_contacts():
-        for k,v in list_of_contacts.items():
-            print('Name: ' + k + '\nPhone: ' + v + '\n--- --- ---')
-        display_menu()
+def display_menu():
+    # Displays the menu
+    print('1. Add Contact\n2. View All Contacts\n3. Search for Contact\n4. Quit')
         
-    def display_menu():
-        print('1. Add Contact\n2. View All Contacts\n3. Quit')
-        user_selection = input('Please, select one of the options from above: ')
-        if user_selection == '1':
-            add_contact()
-        elif user_selection == '2':
-            view_contacts()
-        elif user_selection == '3':
-            print('Goodbye')
-            return
-            
-    display_menu()
 
-contact_book()
+def add_contact(contacts):
+    # Adds a new contact to the dictionary
+    contact_name = input('Name: ')
+    contact_phone = input('Phone: ')
+    contacts[contact_name] = contact_phone
+    print(f"'{contact_name}' was saved successfully!")
+
+def view_contacts(contacts):
+    # Displays all contacts
+    if not contacts:
+        print("Contact book is empty.")
+        return
+    for name,phone in contacts.items():
+        print('Name: ' + name + '\nPhone: ' + phone + '\n--- --- ---')
+         
+def main():
+    contacts = {}
+    while True:
+        display_menu()
+        user_selection = input('Please, select (1-4): ')
+        if user_selection == '1':
+            add_contact(contacts)
+        elif user_selection == '2':
+            view_contacts(contacts)
+        elif user_selection == '3':
+            print('Search not yet implemented')
+        elif user_selection == '4':
+            print('Goodbye')
+            break
+        else:
+            print('Invalid choice. Please, enter a number between 1 and 4')
+
+
+if __name__ == "__main__":
+    main()
