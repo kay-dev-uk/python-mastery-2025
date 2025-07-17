@@ -22,17 +22,42 @@ def view_contacts(contacts):
         print('Name: ' + name + '\nPhone: ' + phone + '\n--- --- ---')
 
 def load_contacts():
-    pass
+    contacts = {} 
+    try:
+        with open(FILENAME, 'r', newline='') as f:
+            reader = csv.reader(f)
+            
+            header = next(reader, None) 
+            if header is None: 
+                print("Contacts file is empty or contains only a header.")
+                return contacts
+            
+            for row in reader:
+                if len(row) == 2:
+                    name, phone = row
+                    contacts[name] = phone
+                else:
+                    print(f"Skipping malformed row: {row}. Expected 2 columns.")
+        print(f"Contacts loaded from {FILENAME} successfully!")
+    except FileNotFoundError:
+        print("Contacts file not found. Starting with an empty contact book.")
+    except Exception as e:
+        print(f"An unexpected error occurred while loading contacts: {e}")
+    return contacts
 
 def save_contacts(contacts):
-    with open(FILENAME, 'w', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(['Name', 'Phone Number'])
-        for name,phone in contacts.items():
-            writer.writerow([name, phone])
+    try:    
+        with open(FILENAME, 'w', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['Name', 'Phone Number'])
+            for name,phone in contacts.items():
+                writer.writerow([name, phone])
+    except Exception as e:
+        print(f"An error occurred while saving contacts: {e}")
+    
          
 def main():
-    contacts = {}
+    contacts = load_contacts()
     while True:
         display_menu()
         user_selection = input('Please, select (1-4): ')
