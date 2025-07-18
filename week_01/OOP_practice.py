@@ -58,4 +58,51 @@ print(my_dog.name)
 print(Dog.all_dog_names)
 
 
+#Inheritance & Polymorphysm
+class Animal:
+    def __init__(self, name):
+        self.name = name
+        print(f"{self.name} (Animal) Created")
+
+    def speak(self):
+        """Generic speak method for any animal."""
+        raise NotImplementedError("Subclass must implement abstract method")
+
+# This class inherits from Animal
+class Dog(Animal): 
+    def __init__(self, name, breed):
+        super().__init__(name) 
+        self.breed = breed
+        print(f"{self.name} (Dog) Created - Breed: {self.breed}")
+
+    def speak(self):
+        return f"{self.name} says Woof!"
+
+class Cat(Animal):
+    def __init__(self, name, color):
+        super().__init__(name)
+        self.color = color
+        print(f"{self.name} (Cat) Created - Color: {self.color}")
+
+    def speak(self):
+        return f"{self.name} says Meow!"
+
+
+my_dog = Dog("Buddy", "Golden Retriever")
+my_cat = Cat("Whiskers", "Tabby")
+
+print("\n--- Demonstrating Polymorphism ---")
+
+# Calls Dog's speak method
+print(my_dog.speak()) 
+
+# Calls Cat's speak method
+print(my_cat.speak()) 
+
+animals = [my_dog, my_cat, Dog("Max", "German Shepherd"), Cat("Mittens", "Black")]
+
+print("\n--- Iterating through a list of 'Animals' ---")
+for animal in animals:
+    print(animal.speak())
+
 
