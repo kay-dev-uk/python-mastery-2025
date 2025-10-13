@@ -12,10 +12,13 @@ while keep_playing:
     print(display)
 
     guess = input('Guess the letter: \n').lower()
+    if guess in secret_word:
+        print('Correct!')
+    else:
+        print('Incorrect!')
     for letter in secret_word:
         if guess == letter:
             guessed_letters.append(guess)
-
     if len(guessed_letters) > 0:
         display = ''
         for i in secret_word:
@@ -23,5 +26,10 @@ while keep_playing:
                 display += i
             else:
                 display += "_"
+    if '_' in display:
+        keep_playing = True
+    else:
+        print('You won!')
+        keep_playing = False
 
 
