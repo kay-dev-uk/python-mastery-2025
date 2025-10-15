@@ -3,10 +3,6 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
 alphabet *= 1000
 
 def encrypt(original_text, shift_amount):
-    # def get_position(letter, amount):
-    #     if (alphabet.index(letter) + shift_amount) > len(alphabet - 1)
-
-
     encrypted_text = ''
     for letter in original_text.lower():
         if letter == ' ':
@@ -16,4 +12,15 @@ def encrypt(original_text, shift_amount):
     
     print(encrypted_text)
 
+def decrypt(encrypted_text, shift_amount):
+    decrypted_text = ''
+    for letter in encrypted_text:
+        if letter == ' ':
+            decrypted_text += letter
+        else:
+            decrypted_text += alphabet[alphabet.index(letter) - shift_amount]
+    
+    print(decrypted_text)
+
+decrypt('cvmxjolbmfcjlvt difslj mpmpm vrjxfy', 1)
 encrypt('Bulwinkalebikus Cherki LOLOl uqiwex',1)
