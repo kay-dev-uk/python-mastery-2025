@@ -24,3 +24,5 @@ while keep_playing:
     shift = int(input('Type the shift number:\n'))
     caesar(original_text=message,shift_amount=shift,encode_or_decode=choice)
     keep_working = input('Type "yes" if you want to go again. Otherwise type "no".\n').lower()
+    if keep_working == "no":
+        keep_playing = False
