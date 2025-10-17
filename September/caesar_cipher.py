@@ -24,5 +24,5 @@ def caesar(direction, text, shift):
         
         print(decrypted_text)
 
-# decrypt('cvmxjolbmfcjlvt difslj mpmpm vrjxfy', 1)
+
 caesar('encrypt','Bulwinkalebikus Cherki LOLOl uqiwex',1)
