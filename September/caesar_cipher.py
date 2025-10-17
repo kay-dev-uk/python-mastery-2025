@@ -1,28 +1,26 @@
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
  'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-alphabet *= 1000
 
-def caesar(direction, text, shift):
+def caesar(original_text, shift_amount, encode_or_decode):
+    output_text = ''
+    if encode_or_decode == 'decode':
+        shift_amount *= -1
+    for letter in original_text:
 
-    if direction == 'encrypt':
-        encrypted_text = ''
-        for letter in text.lower():
-            if letter == ' ':
-                encrypted_text += letter
-            else:
-                encrypted_text += alphabet[alphabet.index(letter) + shift]
-        
-        print(encrypted_text)
+        if letter not in alphabet:
+            output_text += letter
+        else:
+            shifted_position = alphabet.index(letter) + shift_amount
+            shifted_position %= len(alphabet)
+            output_text += alphabet[shifted_position]
 
-    else:
-        decrypted_text = ''
-        for letter in encrypted_text:
-            if letter == ' ':
-                decrypted_text += letter
-            else:
-                decrypted_text += alphabet[alphabet.index(letter) - shift]
-        
-        print(decrypted_text)
+    print(f'Result: {output_text}')
 
+keep_playing = True
 
-caesar('encrypt','Bulwinkalebikus Cherki LOLOl uqiwex',1)
+while keep_playing:
+    choice = input('Type "encode" to encrytpt, type "decode" to decrypt:\n').lower()
+    message = input('Type your message:\n').lower()
+    shift = int(input('Type the shift number:\n'))
+    caesar(original_text=message,shift_amount=shift,encode_or_decode=choice)
+    keep_working = input('Type "yes" if you want to go again. Otherwise type "no".\n').lower()
