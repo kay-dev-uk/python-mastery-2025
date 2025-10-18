@@ -23,3 +23,25 @@ def silent_auction():
     
 
 silent_auction()
+
+
+# student_scores = {
+#     'Harry': 88,
+#     'Ron': 78,
+#     'Hermione': 95,
+#     'Draco': 75,
+#     'Neville': 60
+# }
+
+# student_grades = {}
+
+# for k,v in student_scores.items():
+#     if v >= 91:
+#         student_grades[k] = 'Outstanding'
+#     elif v >= 81:
+#         student_grades[k] = 'Exceeds Expectations'
+#     elif v >= 71:
+#         student_grades[k] = 'Acceptable'
+#     else:
+#         student_grades[k] = 'Fail'
+# print(student_grades)
