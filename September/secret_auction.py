@@ -2,7 +2,7 @@
 # Prompt the user to input their bid starting with $
 # Prompt the user to respond if anyone else is bidding
 # After everyone is in declare the winner
-
+import os
 
 def silent_auction():
     print('Welcome to the Silent Auction!')
@@ -14,6 +14,7 @@ def silent_auction():
         players_bids[new_username] = new_bid
 
         user_choice = input('Add another player? "yes" or "no"?:\n').lower()
+        print("\033[2J\033[H", end="")
         if user_choice == 'no':
             keep_adding_players = False
 
