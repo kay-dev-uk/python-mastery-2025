@@ -33,5 +33,8 @@ def blackjack():
             cards.append(1)
 
         return sum(cards)
+    
+    calculate_score(user_cards)
+    calculate_score(computer_cards)
 
 blackjack()
