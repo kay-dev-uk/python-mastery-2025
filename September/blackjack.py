@@ -14,9 +14,11 @@ def blackjack():
     user_cards = []
     computer_cards = []
 
+
     def deal_card():
         cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
         return random.choice(cards)
+
 
     for n in range(2):
         user_cards.append(deal_card())
@@ -34,7 +36,14 @@ def blackjack():
 
         return sum(cards)
     
-    calculate_score(user_cards)
-    calculate_score(computer_cards)
+    user_score = calculate_score(user_cards)
+    computer_score = calculate_score(computer_cards)
+    print(f"Your cards: {user_cards}, current score: {user_score}")
+    print(f"Computer first card: {computer_cards[0]}, ")
+
+    if_game_over = False
+    if user_score == 0 or computer_score == 0 or user_score > 21:
+        is_game_over = True
+
 
 blackjack()
