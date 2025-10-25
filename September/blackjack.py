@@ -23,8 +23,6 @@ def blackjack():
 
         return sum(cards)
     
-
-    
     keep_playing = True
     while keep_playing:
         user_cards = []
@@ -40,18 +38,18 @@ def blackjack():
         computer_score = calculate_score(computer_cards)
         print(f"Your cards: {user_cards}, current score: {user_score}")
         print(f"Computer's first card: {computer_cards[0]}, ")
-
-    user_choice = input("Type 'y' to hit, type 'n' to pass:\n").lower()
-    if user_choice == 'y':
-        user_cards.append(deal_card())
-    else:
-        print(f"Your cards: {user_cards}, current score: {user_score}")
-        print(f"Computer's first card: {computer_cards}, current score: {computer_score}")
-        if user_score == 0 or computer_score == 0 or user_score > 21:
-            is_game_over = True
-
-    
+        user_choice = input("Type 'y' to hit, type 'n' to pass:\n").lower()
+        if user_choice == 'y':
+            user_cards.append(deal_card())
+            if calculate_score(user_cards) == 0:
+                print("You won!")
+            elif calculate_score(user_cards) > 21:
+                print("You lost!")
         
-
+        else:
+            print(f"Your cards: {user_cards}, current score: {user_score}")
+            print(f"Computer's first card: {computer_cards}, current score: {computer_score}")
+            if user_score == 0 or computer_score == 0 or user_score > 21:
+                is_game_over = True
 
 blackjack()
