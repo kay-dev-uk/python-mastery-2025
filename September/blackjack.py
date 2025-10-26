@@ -28,11 +28,10 @@ def blackjack():
         user_cards = []
         computer_cards = []
         is_game_over = False
-        # First time dealing the cards
+
         for n in range(2):
             user_cards.append(deal_card())
             computer_cards.append(deal_card())
-
 
         user_score = calculate_score(user_cards)
         computer_score = calculate_score(computer_cards)
@@ -44,15 +43,19 @@ def blackjack():
             if user_choice == 'y':
                 user_cards.append(deal_card())
                 user_score = calculate_score(user_cards)
-                print(f"Your score: {user_score}, your cards: {user_cards}. Computer's cards: {computer_cards} computer's score {computer_score}")
+                print(f"Your score: {user_score}, your cards: {user_cards}. Computer's cards: {computer_cards[0]}")
                 if calculate_score(user_cards) == 0:
                     print("You won!")
                     is_game_over = True
                 elif calculate_score(user_cards) > 21:
                     print("Bust! You lost!")
                     is_game_over = True
-            
+
             else:
+                while computer_score < 17 and computer_score > 0:
+                    computer_cards.append(deal_card())
+                    print(f"Computer drew a card, now computer cards are: {computer_cards}")
+                    computer_score = calculate_score(computer_cards)
                 print(f"Your score: {user_score}, your cards: {user_cards}. Computer's cards: {computer_cards} computer's score {computer_score}")
                 print(define_winner(calculate_score(user_cards), calculate_score(computer_cards)))
                 is_game_over = True
@@ -61,6 +64,5 @@ def blackjack():
             continue
         else:
             keep_playing = False
-
 
 blackjack()
