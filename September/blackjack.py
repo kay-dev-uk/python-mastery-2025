@@ -23,6 +23,17 @@ def blackjack():
 
         return sum(cards)
     
+    def define_winner(user, bot):
+        if user > 21:
+            return "Bust! You lost!"
+        elif user == 0 and bot == 0 or user == bot:
+            return "It's a draw!"
+        elif user == 0 or user > bot:
+            return "You won!"
+        elif user > bot:
+            return "You won!"
+
+    
     keep_playing = True
     while keep_playing:
         user_cards = []
@@ -37,19 +48,22 @@ def blackjack():
         user_score = calculate_score(user_cards)
         computer_score = calculate_score(computer_cards)
         print(f"Your cards: {user_cards}, current score: {user_score}")
-        print(f"Computer's first card: {computer_cards[0]}, ")
-        user_choice = input("Type 'y' to hit, type 'n' to pass:\n").lower()
-        if user_choice == 'y':
-            user_cards.append(deal_card())
-            if calculate_score(user_cards) == 0:
-                print("You won!")
-            elif calculate_score(user_cards) > 21:
-                print("You lost!")
-        
-        else:
-            print(f"Your cards: {user_cards}, current score: {user_score}")
-            print(f"Computer's first card: {computer_cards}, current score: {computer_score}")
-            if user_score == 0 or computer_score == 0 or user_score > 21:
+        print(f"Computer's first card: {computer_cards[0]}")
+        while is_game_over == False:
+            user_choice = input("Type 'y' to hit, type 'n' to pass:\n").lower()
+
+            if user_choice == 'y':
+                user_cards.append(deal_card())
+                user_score = calculate_score(user_cards)
+                print(f"Your score: {user_score}, your cards: {user_cards}. Computer's score {computer_score}")
+                if calculate_score(user_cards) == 0:
+                    print("You won!")
+                elif calculate_score(user_cards) > 21:
+                    print("Bust! You lost!")
+            
+            else:
+                print(f"Your score: {user_score}. Computer's score {computer_score}")
+                print(define_winner(calculate_score(user_cards), calculate_score(computer_cards)))
                 is_game_over = True
 
 blackjack()
