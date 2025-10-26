@@ -1,11 +1,3 @@
-# Do you want to play y/n?
-# Get 2 random cards
-# Show computer first card
-# Type y to get another card or n to pass
-# show your final hand and computer final hand (apparently bot doesnt hit)
-# print who wins
-# start over
-
 import random
 
 def blackjack():
@@ -52,7 +44,7 @@ def blackjack():
             if user_choice == 'y':
                 user_cards.append(deal_card())
                 user_score = calculate_score(user_cards)
-                print(f"Your score: {user_score}, your cards: {user_cards}. Computer's score {computer_score}")
+                print(f"Your score: {user_score}, your cards: {user_cards}. Computer's cards: {computer_cards} computer's score {computer_score}")
                 if calculate_score(user_cards) == 0:
                     print("You won!")
                     is_game_over = True
@@ -61,7 +53,7 @@ def blackjack():
                     is_game_over = True
             
             else:
-                print(f"Your score: {user_score}. Computer's score {computer_score}")
+                print(f"Your score: {user_score}, your cards: {user_cards}. Computer's cards: {computer_cards} computer's score {computer_score}")
                 print(define_winner(calculate_score(user_cards), calculate_score(computer_cards)))
                 is_game_over = True
         play_again = input("Type 'y' to play again or 'n' to stop:\n").lower()
