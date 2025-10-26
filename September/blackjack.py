@@ -30,9 +30,6 @@ def blackjack():
             return "It's a draw!"
         elif user == 0 or user > bot:
             return "You won!"
-        elif user > bot:
-            return "You won!"
-
     
     keep_playing = True
     while keep_playing:
@@ -58,12 +55,20 @@ def blackjack():
                 print(f"Your score: {user_score}, your cards: {user_cards}. Computer's score {computer_score}")
                 if calculate_score(user_cards) == 0:
                     print("You won!")
+                    is_game_over = True
                 elif calculate_score(user_cards) > 21:
                     print("Bust! You lost!")
+                    is_game_over = True
             
             else:
                 print(f"Your score: {user_score}. Computer's score {computer_score}")
                 print(define_winner(calculate_score(user_cards), calculate_score(computer_cards)))
                 is_game_over = True
+        play_again = input("Type 'y' to play again or 'n' to stop:\n").lower()
+        if play_again == "y":
+            continue
+        else:
+            keep_playing = False
+
 
 blackjack()
