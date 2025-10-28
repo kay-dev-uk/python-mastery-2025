@@ -25,4 +25,7 @@ def game():
     keep_playing = True
     while keep_playing:
         secret_number = random.randint(1,100)
-        
+        print(secret_number)
+        break
+
+game()
