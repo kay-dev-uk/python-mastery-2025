@@ -18,14 +18,17 @@
 import random
 def game():
     
-    difficulty = input("Select difficulty 'easy' or 'hard':\n").lower()
-    attempts = 10
-    if difficulty == 'hard':
-        attempts = 5
-    keep_playing = True
+    
     while keep_playing:
+        difficulty = input("Select difficulty 'easy' or 'hard':\n").lower()
+        attempts = 10
+        if difficulty == 'hard':
+            attempts = 5
+        keep_playing = True
         secret_number = random.randint(1,100)
-        print(secret_number)
-        break
+        secret_number_guessed = False
+        while not secret_number_guessed and attempts > 0:
+            user_guess = input(f"Guess the number. You have {attempts} attempts left:\n")
+        
 
 game()
