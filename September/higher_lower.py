@@ -312,29 +312,41 @@ import random
 
 def game():
 
-    score = 0
-
     game_over = False
 
+    score = 0
+
     while not game_over:
+ 
+        if len(data) < 2:
+            print("You won!")
+
         account_a = random.choice(data)
         data.pop(data.index(account_a))
         account_b = random.choice(data)
         data.pop(data.index(account_b))
 
-        user_choice = input(f'Who has more followers (in millions) "A"/"B"? Option A: {account_a['name']}, {account_a['description']} from {account_a['country']} or Option B: {account_b['name']}, {account_b['description']} from {account_b['country']}').lower()
+        print(f"Your score: {score}")
+        user_choice = input(f'Who has more followers (in millions) "A"/"B"? Option A: {account_a['name']}, {account_a['description']} from {account_a['country']} or Option B: {account_b['name']}, {account_b['description']} from {account_b['country']}\n').lower()
 
-        result = f"{account_a['name']} has {account_a['follower_count']} and {account_b['name']} has {account_b['follower_count']}"
+        result = f"{account_a['name']} has {account_a['follower_count']} millions and {account_b['name']} has {account_b['follower_count']} millions!"
 
         if account_a['follower_count'] > account_b['follower_count']:
             if user_choice == 'a':
                 print(f'Correct -- {result}')
+                score += 1
+                continue
             else:
                 print(f'Wrong choice! You lost but so you know {result}')
                 game_over = True
         else:
             if user_choice == 'b':
                 print(f'Correct -- {result}')
+                score += 1
+                continue
             else:
                 print(f'Wrong choice! You lost but so you know {result}')
                 game_over = True
+
+
+game()
