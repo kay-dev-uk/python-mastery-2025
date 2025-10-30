@@ -322,4 +322,12 @@ def game():
         account_b = random.choice(data)
         data.pop(data.index(account_b))
 
-        
+        user_choice = input(f'Who has more followers (in millions) "A"/"B"? Option A: {account_a['name']}, {account_a['description']} from {account_a['country']} or Option B: {account_b['name']}, {account_b['description']} from {account_b['country']}').lower()
+
+        if account_a['follower_count'] > account_b['follower_count']:
+            if user_choice == 'a':
+                print('True')
+            else:
+                print('Wrong choice! You lost but so you know ')
+        else:
+
