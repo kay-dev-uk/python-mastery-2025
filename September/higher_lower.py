@@ -324,10 +324,17 @@ def game():
 
         user_choice = input(f'Who has more followers (in millions) "A"/"B"? Option A: {account_a['name']}, {account_a['description']} from {account_a['country']} or Option B: {account_b['name']}, {account_b['description']} from {account_b['country']}').lower()
 
+        result = f"{account_a['name']} has {account_a['follower_count']} and {account_b['name']} has {account_b['follower_count']}"
+
         if account_a['follower_count'] > account_b['follower_count']:
             if user_choice == 'a':
-                print('True')
+                print(f'Correct -- {result}')
             else:
-                print('Wrong choice! You lost but so you know ')
+                print(f'Wrong choice! You lost but so you know {result}')
+                game_over = True
         else:
-
+            if user_choice == 'b':
+                print(f'Correct -- {result}')
+            else:
+                print(f'Wrong choice! You lost but so you know {result}')
+                game_over = True
