@@ -3,6 +3,7 @@
 # Who has more followers?
 # Compare A: Neymar B: Shakira
 # Who has more followers?
+# The Option with less followers stays in game
 
 
 data = [
@@ -316,13 +317,19 @@ def game():
 
     score = 0
 
+    last_account = []
+
     while not game_over:
  
         if len(data) < 2:
             print("You won!")
 
-        account_a = random.choice(data)
-        data.pop(data.index(account_a))
+        if score == 0:
+            account_a = random.choice(data)
+            data.pop(data.index(account_a))
+        else:
+            account_a = last_account
+        
         account_b = random.choice(data)
         data.pop(data.index(account_b))
 
@@ -335,6 +342,7 @@ def game():
             if user_choice == 'a':
                 print(f'Correct -- {result}')
                 score += 1
+                last_account = account_b
                 continue
             else:
                 print(f'Wrong choice! You lost but so you know {result}')
@@ -343,6 +351,7 @@ def game():
             if user_choice == 'b':
                 print(f'Correct -- {result}')
                 score += 1
+                last_account = account_a
                 continue
             else:
                 print(f'Wrong choice! You lost but so you know {result}')
