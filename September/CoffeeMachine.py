@@ -16,6 +16,14 @@
 # check how many ingridients left after each drink
 
 def machine():
+
+    milk = 200
+    water = 300
+    coffee = 100
+    money = 0
+
+    data = [{"drink":"Espresso", "milk": 0, "water": 50, "coffee": 18, "price": 150}, {"drink":"Cappucino", "milk": 100, "water": 250, "coffee": 24, "price": 300}, {"drink":"Latte", "milk": 150, "water": 200, "coffee": 24, "price": 250}]
+
     return True
 
 
