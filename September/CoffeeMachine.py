@@ -10,5 +10,15 @@
 
 # Penny - 0.01 , dime - 0.10, nickel - 0.05, quarter - 0.25
 
+# report func - return report on ingridients
+# ask what user would like (3 options)
+# 4 questions one for each coin type?
+# check how many ingridients left after each drink
+
+def machine():
+    return True
 
 
+
+
+machine()
