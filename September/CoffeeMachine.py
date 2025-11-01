@@ -22,13 +22,21 @@ def machine():
     coffee = 100
     money = 0
 
-    data = [{"drink":"Espresso", "milk": 0, "water": 50, "coffee": 18, "price": 1.50}, {"drink":"Cappucino", "milk": 100, "water": 250, "coffee": 24, "price": 3.00}, {"drink":"Latte", "milk": 150, "water": 200, "coffee": 24, "price": 2.50}]
+    data = {"espresso": {"milk": 0, "water": 50, "coffee": 18, "price": 1.50}, "cappucino": {"milk": 100, "water": 250, "coffee": 24, "price": 3.00}, "latte": {"milk": 150, "water": 200, "coffee": 24, "price": 2.50}}
 
     def report():
         return f"Milk: {milk}ml\nWater: {water}ml\nCoffee: {coffee}gr\nMoney: ${money}"
     
+    def check_ingridients(name):
+        milk - data[name]["milk"] >= 0
+        water - data[name]["water"] >= 0
+        coffee - data[name]["coffee"] >= 0
+    
     def make_a_coffee(name):
-        return True
+        # Check if there are enough ingridients
+         
+
+        print(data[name]["milk"])
 
     keep_playing = True
 
@@ -39,7 +47,9 @@ def machine():
             print(report)
         
         elif user_choice == "espresso" or user_choice == "capuccino" or user_choice == "latte":
-
+            make_a_coffee(user_choice)
+        else:
+            print("Invalid command. Please, try again.")
 
 
 
