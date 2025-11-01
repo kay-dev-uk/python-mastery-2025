@@ -27,13 +27,23 @@ def machine():
     def report():
         return f"Milk: {milk}ml\nWater: {water}ml\nCoffee: {coffee}gr\nMoney: ${money}"
     
-    def check_ingridients(name):
-        milk - data[name]["milk"] >= 0
-        water - data[name]["water"] >= 0
-        coffee - data[name]["coffee"] >= 0
+    def check_ingridients(drink):
+        missing_ingridients = ""
+
+        if milk - data[drink]["milk"] < 0:
+            missing_ingridients + "milk"
+
+        if water - data[drink]["water"] < 0:
+            "water" if missing_ingridients == "" else ", water"
+        
+        if coffee - data[drink]["coffee"] < 0:
+            "coffee" if missing_ingridients == "" else ", coffee"
+        
+        return(True if missing_ingridients == "" else False)
     
     def make_a_coffee(name):
         # Check if there are enough ingridients
+        check_ingridients(name)
          
 
         print(data[name]["milk"])
