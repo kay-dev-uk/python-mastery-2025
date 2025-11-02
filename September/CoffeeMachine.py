@@ -32,11 +32,11 @@ def machine():
         if coin == "penny":
             money += (0.01 * amount)
         elif coin == "dime":
-            money += (0.01 * amount)
+            money += (0.05 * amount)
         elif coin == "nickel":
-            money += (0.01 * amount)
+            money += (0.10 * amount)
         elif coin == "quarter":
-            money += (0.01 * amount)
+            money += (0.25 * amount)
     
     def check_ingridients(drink):
         missing_ingridients = []
@@ -60,10 +60,18 @@ def machine():
         # Check if there are enough ingridients
         nonlocal milk, water, coffee, money
         if check_ingridients(name) == True:
+
+
+            while money < data[name]["price"]:
+                print("Not enough balance! Please, insert more coins")
+                insert_coins("penny", int(input("How many pennies: ")))
+                insert_coins("dime", int(input("How many dimes: ")))
+                insert_coins("nickel", int(input("How many nickels: ")))
+                insert_coins("quarter", int(input("How many quarters: ")))
+            money -= data[name]["price"]
             milk -= data[name]["milk"]
             water -= data[name]["water"]
             coffee -= data[name]["coffee"]
-            print(report())
 
     keep_playing = True
 
@@ -71,10 +79,11 @@ def machine():
         user_choice = input("What would you like?(Espresso, Capuccino, Latte):\n").lower()
 
         if user_choice == "report":
-            print(report)
+            print(report())
         
         elif user_choice == "espresso" or user_choice == "capuccino" or user_choice == "latte":
             make_a_coffee(user_choice)
+            print(f"Here is your {user_choice}. Enjoy!")
         else:
             print("Invalid command. Please, try again.")
 
