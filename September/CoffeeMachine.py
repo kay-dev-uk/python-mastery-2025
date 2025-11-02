@@ -28,25 +28,30 @@ def machine():
         return f"Milk: {milk}ml\nWater: {water}ml\nCoffee: {coffee}gr\nMoney: ${money}"
     
     def check_ingridients(drink):
-        missing_ingridients = ""
+        missing_ingridients = []
 
-        if milk - data[drink]["milk"] < 0:
-            missing_ingridients + "milk"
+        if milk < data[drink]["milk"]:
+            missing_ingridients.append("milk")
 
-        if water - data[drink]["water"] < 0:
-            "water" if missing_ingridients == "" else ", water"
+        if water < data[drink]["water"]:
+            missing_ingridients.append("water")
         
-        if coffee - data[drink]["coffee"] < 0:
-            "coffee" if missing_ingridients == "" else ", coffee"
+        if coffee < data[drink]["coffee"]:
+            missing_ingridients.append("coffee")
         
-        return(True if missing_ingridients == "" else False)
+        if missing_ingridients:
+            print(f"Sorry, there is not enough {', '.join(missing_ingridients)}.")
+            return False
+        else:
+            return True
     
     def make_a_coffee(name):
         # Check if there are enough ingridients
-        check_ingridients(name)
-         
-
-        print(data[name]["milk"])
+        if check_ingridients(name) == True:
+            milk -= data[name]["milk"]
+            water -= data[name]["water"]
+            coffee -= data[name]["coffee"]
+            print(report())
 
     keep_playing = True
 
