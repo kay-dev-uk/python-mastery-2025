@@ -27,6 +27,17 @@ def machine():
     def report():
         return f"Milk: {milk}ml\nWater: {water}ml\nCoffee: {coffee}gr\nMoney: ${money}"
     
+    def insert_coins(coin, amount):
+        nonlocal money
+        if coin == "penny":
+            money += (0.01 * amount)
+        elif coin == "dime":
+            money += (0.01 * amount)
+        elif coin == "nickel":
+            money += (0.01 * amount)
+        elif coin == "quarter":
+            money += (0.01 * amount)
+    
     def check_ingridients(drink):
         missing_ingridients = []
 
@@ -47,6 +58,7 @@ def machine():
     
     def make_a_coffee(name):
         # Check if there are enough ingridients
+        nonlocal milk, water, coffee, money
         if check_ingridients(name) == True:
             milk -= data[name]["milk"]
             water -= data[name]["water"]
