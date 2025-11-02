@@ -63,7 +63,7 @@ def machine():
 
 
             while money < data[name]["price"]:
-                print("Not enough balance! Please, insert more coins")
+                print(f"Current balance: ${money}.The price is ${data[name]["price"]}.  Please, insert more coins")
                 insert_coins("penny", int(input("How many pennies: ")))
                 insert_coins("dime", int(input("How many dimes: ")))
                 insert_coins("nickel", int(input("How many nickels: ")))
@@ -72,22 +72,21 @@ def machine():
             milk -= data[name]["milk"]
             water -= data[name]["water"]
             coffee -= data[name]["coffee"]
+            print(f"Here is your {name}. Enjoy!")
 
     keep_playing = True
 
     while keep_playing:
-        user_choice = input("What would you like?(Espresso, Capuccino, Latte):\n").lower()
+        user_choice = input("What would you like?(Espresso, Cappucino, Latte):\n").lower()
 
         if user_choice == "report":
             print(report())
-        
-        elif user_choice == "espresso" or user_choice == "capuccino" or user_choice == "latte":
+        elif user_choice == "espresso" or user_choice == "cappucino" or user_choice == "latte":
             make_a_coffee(user_choice)
-            print(f"Here is your {user_choice}. Enjoy!")
+        elif user_choice == "exit":
+            break
         else:
             print("Invalid command. Please, try again.")
-
-
 
     return True
 
