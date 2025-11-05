@@ -20,3 +20,9 @@ class CoffeMachine:
             missing_ingridients.append('coffee')
         if money_amount > self.money:
             missing_ingridients.append('money')
+
+    def consume_ingridients(self, milk_amount, water_amount, coffee_amount, money_amount):
+        self.milk =- milk_amount
+        self.water =- water_amount
+        self.coffee =- coffee_amount
+        self.money =- money_amount
