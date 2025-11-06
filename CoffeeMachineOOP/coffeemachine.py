@@ -22,7 +22,18 @@ class CoffeMachine:
             missing_ingridients.append('money')
 
     def consume_ingridients(self, milk_amount, water_amount, coffee_amount, money_amount):
-        self.milk =- milk_amount
-        self.water =- water_amount
-        self.coffee =- coffee_amount
-        self.money =- money_amount
+        self.milk -= milk_amount
+        self.water -= water_amount
+        self.coffee -= coffee_amount
+        self.money -= money_amount
+
+    def insert_coins(self):
+        pennies = int(input("How many pennies: "))
+        dimes = int(input("How many dimes: "))
+        nickels = int(input("How many nickels: "))
+        quarters = int(input("How many quarters: "))
+
+        self.money += (pennies * 0.01)
+        self.money += (dimes * 0.05)
+        self.money += (nickels * 0.1)
+        self.money += (quarters * 0.25)
